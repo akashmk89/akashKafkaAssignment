@@ -15,8 +15,17 @@ public class StationsService {
     @Autowired
     StationRepository stationRepository;
 
+    @Autowired
+    StationsEventProducer stationsEventProducer;
+
     public List<Station> getAllStation(){
         return  (List<Station>) stationRepository.findAll();
+    }
+
+    public void publishAllStations(List<Station> stations) throws Exception{
+        for(Station station: stations) {
+            stationsEventProducer.sendStationsEvent(station);
+        }
     }
 
     public boolean addStationIfNotExistToDatabase(Station station) throws Exception{

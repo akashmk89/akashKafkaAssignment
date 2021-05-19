@@ -41,8 +41,7 @@ public class Schedular {
     public void populateDatabaseRecordsToKTable() throws IOException, ParseException, Exception {
         log.info("populating stations to kafka" + LocalDateTime.now());
         List<Station> stations = stationsService.getAllStation();
-
-
+        stationsService.publishAllStations(stations);
     }
     @Scheduled(cron = "0 0/1 * * * ?")
     public void getWeatherInformation() throws IOException{
