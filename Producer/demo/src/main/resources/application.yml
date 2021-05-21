@@ -11,11 +11,11 @@ spring:
   kafka:
     template:
       default-topic: station-events
-#    consumer:
-#      bootstrap-servers: localhost:9092
-#      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
-#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      group-id: library-events-listener-group
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: library-events-listener-group
     producer:
       bootstrap-servers:
         -   localhost:9092

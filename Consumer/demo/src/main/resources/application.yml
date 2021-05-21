@@ -2,7 +2,7 @@ spring:
   profiles:
     active: local
 server:
-  port: 8081
+  port: 8082
 
 ---
 spring:
@@ -10,22 +10,21 @@ spring:
   kafka:
     template:
       default-topic: station-events
-        consumer:
-          bootstrap-servers: localhost:9092
-          key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
-          value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-          group-id: library-events-listener-group
-#    producer:
-#      bootstrap-servers:
-#        -   localhost:9092
-#      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
-#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: library-events-listener-group
+    producer:
+      bootstrap-servers:
+        -   localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   datasource:
-    url: jdbc:mysql://localhost:3306/transformedstations
+    url: jdbc:mysql://localhost:3306/stations
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: akash1234
 
   jpa:
     hibernate.ddl-auto: update
-
